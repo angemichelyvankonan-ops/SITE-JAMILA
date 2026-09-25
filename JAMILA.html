@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>JAMILA TOURE💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+.container{
+    padding:40px 20px;
+}
+
+h1{
+    font-family:'glow',cursive;
+    font-size:60px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px white; }
+    to{ text-shadow:0 0 25px #ff0033; }
+}
+
+.gif{
+    width:260px;
+    border-radius:20px;
+    margin:20px auto;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.buttons{
+    margin-top:30px;
+    position:relative;
+    height:120px;
+}
+
+button{
+    padding:15px 40px;
+    font-size:20px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.yes{
+    background:#2ecc71;
+    color:white;
+}
+
+.no{
+    background:#e74c3c;
+    color:white;
+    position:absolute;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+.message{
+    display:none;
+    margin-top:40px;
+    background:rgba(255,255,255,.15);
+    padding:25px;
+    border-radius:20px;
+    animation: fade 1.2s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* Cœurs animés */
+.heart{
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall{
+    to{ transform:translateY(110vh); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1> JAMILA TOURE </h1>
+    <h2>Veux-tu être ma petite amie? 💘</h2>
+
+    <img class="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+
+    <div class="buttons">
+        <button class="yes" onclick="oui()">OUI 💖</button>
+        <button class="no" id="noBtn">NON 💔</button>
+    </div>
+
+    <!-- MESSAGE OUI -->
+    <div id="ouiMsg" class="message">
+        <h2>💖 Félicitations mon amour 💖</h2>
+        <img class="gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+        <p>
+            JAMILA ,<br><br>
+            Tu es ma vie tout pour moi** ❤️.<br>
+            Ma joie, ma paix, mon bonheur.<br><br>
+            Je te promets de ne jamais te quitter**,  
+            de toujours te choisir, te respecter te cherire et t’aimer.<br><br>
+            Mon cœur est à toi, Prend en soin MDE💞
+                                                    SIGNER PIERRO
+        </p>
+    </div>
+
+    <!-- MESSAGE NON -->
+    <div id="nonMsg" class="message">
+        <h2>😔 Déception…</h2>
+        <p>
+            Je suis vraiment déçu…<br>
+            Tu aurais dû me choisir tu ma 
+            fais bobo au coeur  💔
+        </p>
+    </div>
+</div>
+
+<!-- MUSIQUE -->
+<audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* MUSIQUE + OUI */
+function oui(){
+    document.getElementById("music").play();
+
+    const ouiMsg = document.getElementById("ouiMsg");
+    const nonMsg = document.getElementById("nonMsg");
+
+    ouiMsg.style.display = "block";
+    nonMsg.style.display = "none";
+    ouiMsg.scrollIntoView({behavior:"smooth"});
+
+    // pluie de cœurs
+    for(let i=0;i<30;i++){
+        const heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="💖💖💖";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(2+Math.random()*3)+"s";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }
+}
+
+/* NON QUI FUIT 3 FOIS */
+let noCount = 0;
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", ()=>{
+    if(noCount < 3){
+        noBtn.style.left = Math.random()*70 + "%";
+        noBtn.style.top  = Math.random()*70 + "px";
+        noCount++;
+    } else {
+        document.getElementById("nonMsg").style.display="block";
+        document.getElementById("ouiMsg").style.display="none";
+        document.getElementById("nonMsg").scrollIntoView({behavior:"smooth"});
+        noBtn.style.display="none";
+    }
+});
+</script>
+
+</body>
+</html>
+
